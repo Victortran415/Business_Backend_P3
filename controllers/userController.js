@@ -62,14 +62,14 @@ module.exports = {
 				from: process.env.EMAIL,
 				to: createNewUser.email,
 				subject: "Thank you for signing up with Huddle Room!",
-				text: `Click to confirm http://localhost:3000/confirm_token/${confirmToken.token}`
+				text: `Click to confirm ${process.env.HEROKU}${confirmToken.token}`
 			}
 
 			transporter.sendMail(mailOption, (error, info) => {
 				if (error) {
 					console.log(error)
 				} else {
-					console.log(`Email was sent with: http://localhost:3000/confirm_token/${confirmToken.token}`)
+					console.log(`Email was sent with: ${process.env.HEROKU}${confirmToken.token}`)
 				}
 			})
 
