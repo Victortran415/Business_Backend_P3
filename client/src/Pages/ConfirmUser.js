@@ -8,7 +8,7 @@ const ConfirmUser = (props) => {
 	useEffect(() => {
 		(async () => {
 			try {
-				await axios.get("/register", {
+				await axios.post("/register", {
 					token: props.match.params.token,
 				});
 				history.push("/");

@@ -27,6 +27,7 @@ if (process.env.NODE_ENV === "production")
 
 // Custom Routes
 
+app.use("/register", require("./routes/confirmRoutes"))
 app.use("/users", require("./routes/userRoutes"));
 app.use("/announce", require("./routes/announceRoutes"));
 
