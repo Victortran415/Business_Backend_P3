@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import Axios from "axios";
 import pic2 from "../Img/toppic2.png";
+import showPwdImg from "../Img/show-password.svg";
+import hidePwdImg from "../Img/hide-password.svg";
 
 const Signup = () => {
 	const [form, setForm] = useState();
+	const [isRevealPwd, setIsRevealPwd] = useState(false);
 	const history = useHistory();
 
 	const onChange = (e) => {
@@ -55,7 +58,7 @@ const Signup = () => {
 					<label htmlFor="password">Password: </label>
 					<input
 						onChange={onChange}
-						type="password"
+						type={isRevealPwd ? "text" : "password"}
 						name="password"
 						placeholder="password"
 						class="input"
@@ -64,11 +67,17 @@ const Signup = () => {
 					<label htmlFor="passwordCheck">Re-enter Password: </label>
 					<input
 						onChange={onChange}
-						type="password"
+						type={isRevealPwd ? "text" : "password"}
 						name="passwordCheck"
 						placeholder="passwordCheck"
 						class="input"
 					></input>
+					<img
+						className="hideShowPw"
+						title={isRevealPwd ? "Hide password" : "Show password"}
+						src={isRevealPwd ? hidePwdImg : showPwdImg}
+						onClick={() => setIsRevealPwd((prevState) => !prevState)}
+					/>
 					<p></p>
 					<br />
 					<label>Select Job Title:</label>{" "}
