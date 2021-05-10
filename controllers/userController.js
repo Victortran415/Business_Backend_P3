@@ -62,14 +62,14 @@ module.exports = {
 				from: process.env.EMAIL,
 				to: createNewUser.email,
 				subject: "Thank you for signing up with Huddle Room!",
-				text: `Click to confirm ${process.env.HEROKU}${confirmToken.token}`
+				text: `Click to confirm http://localhost:3000/confirm_token/${confirmToken.token}`
 			}
 
 			transporter.sendMail(mailOption, (error, info) => {
 				if (error) {
 					console.log(error)
 				} else {
-					console.log(`Email was sent with: ${process.env.HEROKU}${confirmToken.token}`)
+					console.log(`Email was sent with: http://localhost:3000/confirm_token/${confirmToken.token}`)
 				}
 			})
 
@@ -86,9 +86,7 @@ module.exports = {
 		try {
 			const { email, password } = req.body;
 
-			if (!email || !password) {
-				res.status(400).json({ message: "must input correct credentials" });
-			}
+			
 
 			const user = await User.findOne({ email: email });
 			console.log("Role:-", helper.RoleChecker(user)); //When a user logs in to the app, the role gets logged in to the console

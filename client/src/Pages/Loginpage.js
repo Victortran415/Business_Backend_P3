@@ -4,9 +4,13 @@ import { useHistory } from "react-router-dom";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import pic2 from "../Img/toppic.png";
+import showPwdImg from "../Img/show-password.svg";
+import hidePwdImg from "../Img/hide-password.svg";
 
 const Login = () => {
 	const { userData, setUserData } = useContext(UserContext);
+	const [isRevealPwd, setIsRevealPwd] = useState(false);
+
 	const [form, setForm] = useState({});
 	const history = useHistory();
 
@@ -74,17 +78,20 @@ const Login = () => {
 					<br />
 					<p></p>
 					<label htmlFor="password">Password: </label>
-					<br></br>
 					<input
-						type="password"
+						type={isRevealPwd ? "text" : "password"}
 						name="password"
 						className="loginPassword"
 						input
 						class="input"
 						onChange={onChange}
 					/>
-					<br />
-					<p></p>
+					<img
+						className="hideShowPw"
+						title={isRevealPwd ? "Hide password" : "Show password"}
+						src={isRevealPwd ? hidePwdImg : showPwdImg}
+						onClick={() => setIsRevealPwd((prevState) => !prevState)}
+					/>
 					<input class="btn02" type="submit" value="Login" />
 				</form>
 			</div>
