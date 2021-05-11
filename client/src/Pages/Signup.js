@@ -62,7 +62,14 @@ const Signup = () => {
 						name="password"
 						placeholder="password"
 						class="input"
-					></input>{" "}
+					></input>
+					<img
+						className="hideShowPw"
+						title={isRevealPwd ? "Hide password" : "Show password"}
+						src={isRevealPwd ? hidePwdImg : showPwdImg}
+						onClick={() => setIsRevealPwd((prevState) => !prevState)}
+					/>
+					{" "}
 					<p></p>
 					<label htmlFor="passwordCheck">Re-enter Password: </label>
 					<input
@@ -72,12 +79,6 @@ const Signup = () => {
 						placeholder="passwordCheck"
 						class="input"
 					></input>
-					<img
-						className="hideShowPw"
-						title={isRevealPwd ? "Hide password" : "Show password"}
-						src={isRevealPwd ? hidePwdImg : showPwdImg}
-						onClick={() => setIsRevealPwd((prevState) => !prevState)}
-					/>
 					<p></p>
 					<br />
 					<label>Select Job Title:</label>{" "}
