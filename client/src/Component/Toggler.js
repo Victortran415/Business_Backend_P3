@@ -11,7 +11,7 @@ const Button = styled.button`
   justify-content: space-between;
   margin: 0 auto;
   overflow: hidden;
-  padding: .5rem;
+  padding: 10;
   position: relative;
   width: 3rem;
   height: 3rem;
